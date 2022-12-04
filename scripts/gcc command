@@ -1,0 +1,1 @@
+gcc -m32 -g -O2 -Wall -fPIC --shared usertime.c -o usertime.dll -I "C:\lua\include" -L"C:\lua" -llua5.1
