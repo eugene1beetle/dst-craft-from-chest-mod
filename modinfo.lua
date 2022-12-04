@@ -1,5 +1,5 @@
-name = ' Craft From Chest [DST] Fixed'
-description = 'When crafting items, ingredients are automatically obtained from nearby containers. No manually searching for necessary items anymore! '
+name = 'Craft From Chest [DST] Fixed'
+description = 'When crafting items, ingredients are automatically obtained from nearby containers. No manually searching for necessary items anymore!'
 author = 'Editor & Monti & eugene1beetle'
 version = '1.1.11.4'
 -- forumthread = ''
