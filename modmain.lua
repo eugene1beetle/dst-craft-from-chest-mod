@@ -23,6 +23,7 @@ local STRINGS = _G.STRINGS
 local DeBuG = GetModConfigData("debug")
 local range = GetModConfigData("range")
 local inv_first = GetModConfigData("is_inv_first")
+local keep_one_item = GetModConfigData("keep_one_item")
 -- local c = { r = 0, g = 0.3, b = 0 }
 
 local Builder = _G.require 'components/builder'
@@ -235,6 +236,9 @@ local function removeFromNearbyChests(player, item, amt)
         local container = v.components.container
         found, num_found = container:Has(item, 1)
         if found then
+            if keep_one_item then
+                num_found = num_found - 1
+            end
             numItemsFound = numItemsFound + num_found
             table.insert(consumedChests, v)
             if (amt > num_found) then
@@ -403,7 +407,11 @@ local function findAllFromChest(chests)
             for _, i in pairs(v.components.container.slots) do prefabs[i.prefab] = true end
             for t, _ in pairs(prefabs) do
                 local found, amount = v.components.container:Has(t, 1)
-                items[t] = (items[t] or 0) + amount
+                local updated_amount = (items[t] or 0) + amount
+                if keep_one_item and updated_amount > 0 then
+                    updated_amount = updated_amount - 1
+                end
+                items[t] = updated_amount
                 -- debugPrint("findAllFromChest: "..t.prefab.." "..amount)
             end
         end
