@@ -55,6 +55,15 @@ configuration_options = {
         default = false
     },
     {
+        name = "keep_one_item",
+        label = "Keep one item in chest?: ",
+        options = {
+            { description = "Yes", data = true },
+            { description = "No", data = false },
+        },
+        default = false
+    },
+    {
         name = "debug",
         label = "Debug msg",
         options = {
